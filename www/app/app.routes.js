@@ -26,5 +26,23 @@ Aqui van  a estar las rutas de mi aplicacion
         controller: 'HomeController as home'
       })
 
+      .state('todos', {
+        url: '/todos',
+        templateUrl: 'app/todo/todo-list.html',
+        controller: 'TodoListController as list'
+      })
+
+      .state('create', {
+        url: '/createTodo',
+        templateUrl: 'app/todo/create-todo.html',
+        controller: 'CreateTodoController as create'
+      })
+
+      .state('update', {
+        url: '/updateTodo/:id',
+        templateUrl: 'app/todo/update-todo.html',
+        controller: 'UpdateTodoController as update'
+      })
+
    }
 })();

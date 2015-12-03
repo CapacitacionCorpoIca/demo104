@@ -8,6 +8,7 @@ Gestionar los modulos de nuestra aplicacion
       //Core
       'ionic',
       //Modules
-      'app.users'
+      'app.users',
+      'app.todo'
     ]);
 })();
