@@ -1,8 +1,23 @@
 <ion-view view-title="Login">
-	<div class="bar bar-header bar-assertive">
-		<h1 class="title">Login</h1>
-	</div>
-	<ion-content class="has-header">
-		<h1>Login</h1>
-	</ion-content>
+  <div class="bar bar-header bar-assertive">
+    <h1 class="title">Login</h1>
+  </div>
+  <ion-content class="has-header">
+    <form ng-submit="login.login()">
+      <ion-list>
+        <label class="item item-input">
+          <span class="input-label">User:</span>
+          <input ng-model="login.user.nick" type="email" name="email"/>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password:</span>
+          <input ng-model="login.user.password" type="password" name="password"/>
+        </label>
+      </ion-list>
+      <div class="padding">
+        <button class="button button-block button-positive" type="submit">Log in</button>
+      </div>
+    </form>
+     <button type="button" class="button" ng-click="login.forgot()">recordar</button>
+  </ion-content>
 </ion-view>

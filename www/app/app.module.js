@@ -7,5 +7,7 @@ Gestionar los modulos de nuestra aplicacion
     .module('appCorpoIca', [
       //Core
       'ionic',
+      //Modules
+      'app.users'
     ]);
 })();

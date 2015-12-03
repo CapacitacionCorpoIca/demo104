@@ -17,6 +17,13 @@ Aqui van  a estar las rutas de mi aplicacion
       .state('login', {
         url: '/login',
         templateUrl: 'app/users/login.html',
+        controller: 'LoginController as login'
+      })
+
+      .state('home', {
+        url: '/home',
+        templateUrl: 'app/users/home.html',
+        controller: 'HomeController as home'
       })
 
    }
