@@ -1,10 +1,25 @@
-# demo103
-## Overview Day 3 y Day 4 (Services and Clean Code)
-- Usando $http
-- Conexión a Rest
-- LocalStorage
-- Angular Resource
-- Servicios propios
-- Servicios de terceros
+# demo104
 
-## DEMO
+
+## Overview Day 5 API 
+- Que es ngCordova
+- Camera
+- Geolocation
+- BatteryStatus
+- Vibration
+- Contacts
+- Toast (Que es esto?)
+
+## Overview Day 6 
+- Angular Clean Code
+- Controladores
+- Servicios
+- Directivas
+- Revisar códigos y organizar package
+- Consumo de Servicios através de Web Service en Angular
+
+## [DEMO](http://capacitacioncorpoica.github.io/demo104/)
+
+##Links
+- [Crosswalk](http://slides.com/nicobytes/crosswalk)
+- [Conf - crosswalk] (https://www.youtube.com/watch?v=s_3gUHwg4ms)
