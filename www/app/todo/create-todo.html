@@ -17,6 +17,10 @@
 					<span class="input-label">Fecha:</span>
 					<input type="date" ng-model="create.newTodo.date" />
 				</label>
+				<label class="item item-input">
+					<span class="input-label">Fecha dos:</span>
+					<input type="text" readonly ng-click="create.showDate()" ng-model="create.newTodo.date" />
+				</label>
 			</div>
 			<div class="padding">
 				<button type="submit" class="button button-block button-positive">Create</button>
