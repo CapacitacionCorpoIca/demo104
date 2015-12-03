@@ -1,0 +1,14 @@
+<ion-view view-title="Home">
+	<div class="bar bar-header bar-assertive">
+		<h1 class="title">Tareas</h1>
+	</div>
+	<ion-content class="has-header">
+		<ion-list>
+			<ion-item href="#/updateTodo/{{ todo.id }}" ng-repeat="todo in list.todos" class="icon-left" ng-class="{ 'done': todo.done }">
+				<i class="icon ion-beer"></i>
+				{{ todo.name }}
+			</ion-item>
+		</ion-list>
+		<a href="#/createTodo" class="button">New Task</a>
+	</ion-content>
+</ion-view>
