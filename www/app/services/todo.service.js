@@ -8,10 +8,32 @@ Servicio de usuarios
     .factory('todoService', todoService);
 
     todoService.$inject = [
+      '$cordovaSQLite',
+      '$q'
     ];
 
-    function todoService( ){
+    function todoService( $cordovaSQLite, $q ){
 
+      //var db = $cordovaSQLite.openDB({ name: "my.db" });
+      function deleteTable(){
+        var sql = "DROP TABLE IF EXISTS todo";
+        $cordovaSQLite.execute(db, sql)
+          .then(function(res) {
+            console.log("insertId: " + res);
+          }, function (err) {
+            console.error(err);
+          });
+      }
+
+      function createTable(){
+        var sql = "CREATE TABLE IF NOT EXISTS todo (id integer PRIMARY KEY AUTOINCREMENT, name text, date text, done integer)";
+        $cordovaSQLite.execute(db, sql)
+          .then(function(res) {
+            console.log("insertId: " + res);
+          }, function (err) {
+            console.error(err);
+          });
+      }
       var data = [
         {
           id: 1,
@@ -36,6 +58,9 @@ Servicio de usuarios
         },
       ];
 
+      //deleteTable();
+      createTable();
+
       var service = {
         create: create,
         update: update,
@@ -48,9 +73,15 @@ Servicio de usuarios
 
       function create( newTodo ){
        /*Insert code*/
-       newTodo.id = data[data.length - 1].id + 1;
-       newTodo.done = false;
-       data.push( newTodo );
+        var query = "INSERT INTO todo (id, name, date, done) VALUES (?,?,?,?)";
+        var attrs = [null, newTodo.name, newTodo.date.getTime(), 0]
+        $cordovaSQLite
+        .execute(db, query, attrs)
+          .then(function(res) {
+            console.log("insertId: " + res.insertId);
+          }, function (err) {
+            console.error(err);
+          });
       }
 
       function update( data ){
@@ -66,7 +97,31 @@ Servicio de usuarios
 
       function getAll(){
        /*Insert code*/
-       return data;
+       var query = "SELECT * FROM todo";
+        return $cordovaSQLite.execute(db, query)
+          .then( complete )
+          .catch( failed );
+
+          function complete( result ){
+            return $q.when( preparateData( result.rows ) );
+          }
+
+          function preparateData( data ){
+            var newData = [];
+            for (var i = 0; i < data.length; i++) {
+              newData.push({
+                id: data.item(i).id,
+                name: data.item(i).name,
+                date: new Date(parseInt(data.item(i).date)),
+                done: data.item(i).done == 1 ? true : false
+              });
+            };
+            return newData;
+          }
+
+          function failed( error ){
+            return $q.reject( error );
+          }
       }
 
       function get( id ){

@@ -29,7 +29,8 @@ Aqui van  a estar las rutas de mi aplicacion
       .state('todos', {
         url: '/todos',
         templateUrl: 'app/todo/todo-list.html',
-        controller: 'TodoListController as list'
+        controller: 'TodoListController as list',
+        cache: false
       })
 
       .state('create', {

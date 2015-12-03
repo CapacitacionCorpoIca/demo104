@@ -21,6 +21,11 @@ Se encarga de correr la app
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+      if(window.cordova){
+        db = $cordovaSQLite.openDB({ name: "my.db", bgType: 0 });
+      }else{
+        db = window.openDatabase( "my.db", '1.0', "my", 1024*1024*100);
+      }
     });
   }
 })();

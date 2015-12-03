@@ -21,11 +21,21 @@ Controlador para la lista de tareas
       activate();
 
       function activate(){
-      	getTodos();
+        getTodos();
       }
 
       function getTodos(){
-      	vm.todos = todoService.getAll();
+        todoService.getAll()
+        .then( complete )
+        .catch( failed );
+
+        function complete( todos ){
+          vm.todos = todos;
+        }
+
+        function failed( error ){
+          console.log( error );
+        }
       }
 
     }
