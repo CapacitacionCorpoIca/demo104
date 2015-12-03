@@ -8,7 +8,6 @@ var db;
     .module('appCorpoIca', [
       //Core
       'ionic',
-      'ngCordova',
       //Modules
       'app.users',
       'app.todo'
